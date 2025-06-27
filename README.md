@@ -89,34 +89,35 @@
 chmod 400 /tmp/my-key.pem
 ```
 
-⑮ 踏み台経由でプライベートEC2にSSH接続
-ssh -i /tmp/my-key.pem ec2-user@10.0.2.x
+### ⑮ 踏み台経由でプライベートEC2にSSH接続
+- ssh -i /tmp/my-key.pem ec2-user@10.0.2.x
 
-🌐 NAT Gatewayの構成
-⑯ NAT Gateway作成
-パブリックサブネット（test-subnet-a）に作成
+## 🌐 NAT Gatewayの構成
 
-Elastic IPを割り当てる
+### ⑯ NAT Gateway作成
+- パブリックサブネット（test-subnet-a）に作成
+- Elastic IPを割り当てる
 
-⑰ プライベート側ルートテーブル（rtb-subnet-b）にルート追加
-宛先：0.0.0.0/0
+### ⑰ プライベート側ルートテーブル（rtb-subnet-b）にルート追加
+- 宛先：0.0.0.0/0
+- ターゲット：NAT Gateway
 
-ターゲット：NAT Gateway
+### ⑱ 通信確認（本番EC2から）
+- 以下を実行してレスポンス確認：
 
-⑱ 通信確認（本番EC2から）
-以下を実行してレスポンス確認：
-
+```
 curl https://www.google.com
+```
 
-👉 成功すれば、NAT Gateway経由でインターネット通信可能な構成が完成。
-セキュアかつ実用的な設計。
+-- 👉 成功すれば、NAT Gateway経由でインターネット通信可能な構成が完成。セキュアかつ実用的な設計。
 
+---
 
-🧹 お片付け（リソース削除）
-EC2インスタンス（踏み台・本番）削除
+## 🧹 お片付け（リソース削除）
+- EC2インスタンス（踏み台・本番）削除
 
-NAT Gateway 削除（Elastic IPの解放も忘れず）
+- NAT Gateway 削除（Elastic IPの解放も忘れず）
 
-サブネット・ルートテーブル・IGW・VPC削除
+- サブネット・ルートテーブル・IGW・VPC削除
 
-⚠ NAT Gateway・EIPは放置すると課金され続けるので注意！
+## ⚠ NAT Gateway・EIPは放置すると課金され続けるので注意！
