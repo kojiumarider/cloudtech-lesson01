@@ -87,19 +87,19 @@
 ```bash
 chmod 400 /tmp/my-key.pem
 
-⑮ 踏み台経由でプライベートEC2にSSH接続
+### ⑮ 踏み台経由でプライベートEC2にSSH接続
 ssh -i /tmp/my-key.pem ec2-user@10.0.1.x
 
-🌐 NAT Gatewayの構成
-⑯ NAT Gateway作成
-パブリックサブネットに作成
+### 🌐 NAT Gatewayの構成
+### ⑯ NAT Gateway作成
 
+パブリックサブネットに作成
 Elastic IPを割り当て
 
-⑰ プライベート側ルートテーブル（rtb-subnet-b）にルート追加
+### ⑰ プライベート側ルートテーブル（rtb-subnet-b）にルート追加
 0.0.0.0/0 → NAT Gateway をターゲットに設定
 
-⑱ 通信確認（本番EC2から）
+### ⑱ 通信確認（本番EC2から）
 curl google.com
 
 → レスポンスが返ればNAT設定成功！
@@ -108,7 +108,7 @@ curl google.com
 
 
 
-🧹 お片付け（リソース削除）
+### 🧹 お片付け（リソース削除）
 EC2（2台）削除
 
 NAT Gateway → EIPの解放も忘れず
