@@ -122,5 +122,5 @@ curl https://www.google.com
 - NAT Gateway 削除（Elastic IPの解放も忘れず）
 
 - サブネット・ルートテーブル・IGW・VPC削除
-
-## ⚠ NAT Gateway・EIPは放置すると課金され続けるので注意！
+<br>
+⚠ NAT Gateway・EIPは放置すると課金され続けるので注意！
