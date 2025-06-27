@@ -87,6 +87,7 @@
 
 ```bash
 chmod 400 /tmp/my-key.pem
+```
 
 ⑮ 踏み台経由でプライベートEC2にSSH接続
 ssh -i /tmp/my-key.pem ec2-user@10.0.2.x
